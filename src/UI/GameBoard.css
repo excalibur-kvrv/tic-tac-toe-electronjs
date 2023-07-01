@@ -1,0 +1,79 @@
+.game-board {
+  display: block;
+}
+
+.board {
+  margin-top: 5%;
+}
+
+.player-token {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.col-1,
+.col-4,
+.col-7 {
+  margin-left: 5%;
+}
+
+.row-1,
+.row-2,
+.row-3 {
+  display: inline-flex;
+  width: 60%;
+  height: 60px;
+  margin-left: 35%;
+  vertical-align: top;
+}
+
+.col-1,
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9 {
+  width: 10%;
+  display: table;
+}
+
+.player-token:hover {
+  cursor: pointer;
+  background-color: burlywood;
+}
+
+.col-3 {
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.col-2 {
+  border-bottom: 1px solid black;
+}
+
+.col-1 {
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.col-4 {
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.col-5 {
+  border-bottom: 1px solid black;
+}
+
+.col-6 {
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.col-8 {
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
