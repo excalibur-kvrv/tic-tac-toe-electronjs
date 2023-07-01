@@ -2,7 +2,7 @@
   "name": "tic-tac-toe",
   "productName": "tic-tac-toe",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "A tic tac toe game in electron js",
   "main": ".vite/build/main.js",
   "scripts": {
     "start": "electron-forge start",
@@ -11,6 +11,7 @@
     "publish": "electron-forge publish",
     "lint": "echo \"No linting configured\""
   },
+  "homepage": "https://github.com/excalibur-kvrv/tic-tac-toe-electronjs",
   "keywords": [],
   "author": {
     "name": "Kevin Rohan Vaz",
