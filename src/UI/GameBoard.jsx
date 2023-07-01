@@ -1,4 +1,4 @@
-import { getBoardFromDict, calculateWinner } from "./utils";
+import { getBoardFromDict, calculateWinner, checkForTie } from "./utils";
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX, faO } from "@fortawesome/free-solid-svg-icons";
@@ -18,10 +18,13 @@ const GameBoard = ({ playerToken, gameStartedHandler }) => {
   });
   const [winner, setWinner] = useState("");
   const [currentPlayer, setCurrentPlayer] = useState(playerToken);
+  const [tie, setTie] = useState(false);
 
   useEffect(() => {
     const currentBoard = getBoardFromDict(board);
     const currentWinner = calculateWinner(currentBoard);
+    const currentTie = checkForTie(board);
+    setTie(currentTie);
     setWinner(currentWinner);
   }, [board]);
 
@@ -107,8 +110,9 @@ const GameBoard = ({ playerToken, gameStartedHandler }) => {
           </div>
         </div>
       </div>
+      {tie ? <p>Game is a draw</p> : null}
       {winner ? <p>{setIcon(winner)} won the game</p> : null}
-      {winner ? <button onClick={() => gameStartedHandler(false)} className="restart-button">Restart Game</button>: null}
+      {winner || tie ? <button onClick={() => gameStartedHandler(false)} className="restart-button">Restart Game</button>: null}
     </div>
   );
 };

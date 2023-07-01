@@ -26,4 +26,12 @@ function getBoardFromDict(dict) {
   return board;
 }
 
-export { calculateWinner, getBoardFromDict };
+function checkForTie(dict) {
+  let availablePos = false;
+  for (let key of Object.keys(dict)) {
+    if (dict[key] === "") availablePos = true;
+  }
+  return !availablePos;
+}
+
+export { calculateWinner, getBoardFromDict, checkForTie };
