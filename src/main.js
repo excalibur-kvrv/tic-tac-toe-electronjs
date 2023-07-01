@@ -14,7 +14,8 @@ const createWindow = () => {
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
     },
-    icon: nativeImage.createFromPath(path.join(__dirname, "assets/tic-tac-toe.png"))
+    icon: nativeImage.createFromPath(path.join(__dirname, "assets/tic-tac-toe.png")),
+    titleBarStyle: 'hidden'
   });
 
   // and load the index.html of the app.

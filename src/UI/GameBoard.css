@@ -42,7 +42,7 @@
 
 .player-token:hover {
   cursor: pointer;
-  background-color: burlywood;
+  background-color: grey;
 }
 
 .col-3 {
@@ -76,4 +76,19 @@
 .col-8 {
   border-left: 1px solid black;
   border-right: 1px solid black;
+}
+
+.restart-button {
+  margin-top: 3%;
+  border-style: none;
+  height: 30px;
+  width: 200px;
+  color: whitesmoke;
+  background-color: gray;
+  font-family: 'Space Mono', monospace;
+}
+
+.restart-button:hover {
+  cursor: pointer;
+  background-color: black;
 }

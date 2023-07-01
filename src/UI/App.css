@@ -1,4 +1,15 @@
+@font-face {
+  font-family: 'Space Mono';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Space Mono'), url(../assets/SpaceMono-Regular.ttf) format('truetype');
+}
+
 .app {
   text-align: center;
   font-family: 'Space Mono', monospace;
+}
+
+body {
+  background-color: whitesmoke;
 }

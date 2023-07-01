@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { getBoardFromDict, calculateWinner } from "./utils";
+import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX, faO } from "@fortawesome/free-solid-svg-icons";
 import "./GameBoard.css";
 
-const GameBoard = ({ playerToken }) => {
+const GameBoard = ({ playerToken, gameStartedHandler }) => {
   const [board, setBoard] = useState({
     0: "",
     1: "",
@@ -15,9 +16,22 @@ const GameBoard = ({ playerToken }) => {
     7: "",
     8: "",
   });
+  const [winner, setWinner] = useState("");
+  const [currentPlayer, setCurrentPlayer] = useState(playerToken);
+
+  useEffect(() => {
+    const currentBoard = getBoardFromDict(board);
+    const currentWinner = calculateWinner(currentBoard);
+    setWinner(currentWinner);
+  }, [board]);
+
   const setBoardToken = (value) => {
-    console.log(value);
-    setBoard({ ...board, [value]: playerToken });
+    if (winner) return null;
+    if (board[value] === "") {
+      setBoard({ ...board, [value]: currentPlayer });
+      if (currentPlayer === "X") setCurrentPlayer("O");
+      else setCurrentPlayer("X");
+    }
   };
 
   const setIcon = (value) => {
@@ -32,12 +46,14 @@ const GameBoard = ({ playerToken }) => {
 
   return (
     <div className="game-board">
-      Player selected{" "}
-      {playerToken === "X" ? (
-        <FontAwesomeIcon icon={faX} />
-      ) : (
-        <FontAwesomeIcon icon={faO} />
-      )}
+      <p>
+        Current Player {" "}
+        {currentPlayer === "X" ? (
+          <FontAwesomeIcon icon={faX} />
+        ) : (
+          <FontAwesomeIcon icon={faO} />
+        )}
+      </p>
       <div className="board">
         <div className="row-1">
           <div className="col-1">
@@ -91,6 +107,8 @@ const GameBoard = ({ playerToken }) => {
           </div>
         </div>
       </div>
+      {winner ? <p>{setIcon(winner)} won the game</p> : null}
+      {winner ? <button onClick={() => gameStartedHandler(false)} className="restart-button">Restart Game</button>: null}
     </div>
   );
 };

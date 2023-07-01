@@ -11,7 +11,7 @@ const App = () => {
     <div className="app">
       <h1>Tic Tac Toe</h1>
       {gameStarted ? (
-        <GameBoard playerToken={playerToken} />
+        <GameBoard playerToken={playerToken} gameStartedHandler={setGameStarted} />
       ) : (
         <PlayerTokenChoice
           playerTokenHandler={setPlayerToken}
