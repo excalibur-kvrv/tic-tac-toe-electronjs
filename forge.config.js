@@ -3,6 +3,19 @@ const path = require('path');
 module.exports = {
   packagerConfig: {},
   rebuildConfig: {},
+  publishers: [
+    {
+      name: '@electron-forge/publisher-github',
+      config: {
+        repository: {
+          owner: 'excalibur-kvrv',
+          name: 'tic-tac-toe-electronjs'
+        },
+        prerelease: false,
+        draft: true
+      }
+    }
+  ],
   makers: [
     {
       name: '@electron-forge/maker-deb',
