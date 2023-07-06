@@ -18,6 +18,26 @@ function calculateWinner(squares) {
   return null;
 }
 
+function getWinnerPos(squares) {
+  const lines = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
+  for (let i = 0; i < lines.length; i++) {
+    const [a, b, c] = lines[i];
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      return [a, b, c];
+    }
+  }
+  return [-1, -1, -1];
+}
+
 function getBoardFromDict(dict) {
   const board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
   for (let key of Object.keys(dict)) {
@@ -34,4 +54,4 @@ function checkForTie(dict) {
   return !availablePos;
 }
 
-export { calculateWinner, getBoardFromDict, checkForTie };
+export { calculateWinner, getBoardFromDict, checkForTie, getWinnerPos };

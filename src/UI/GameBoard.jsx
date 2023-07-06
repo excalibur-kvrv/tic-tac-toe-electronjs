@@ -1,4 +1,4 @@
-import { getBoardFromDict, calculateWinner, checkForTie } from "./utils";
+import { getBoardFromDict, calculateWinner, checkForTie, getWinnerPos } from "./utils";
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX, faO } from "@fortawesome/free-solid-svg-icons";
@@ -17,14 +17,17 @@ const GameBoard = ({ playerToken, gameStartedHandler }) => {
     8: "",
   });
   const [winner, setWinner] = useState("");
+  const [winnerPos, setWinnerPos] = useState([-1, -1, -1]);
   const [currentPlayer, setCurrentPlayer] = useState(playerToken);
   const [tie, setTie] = useState(false);
 
   useEffect(() => {
     const currentBoard = getBoardFromDict(board);
     const currentWinner = calculateWinner(currentBoard);
+    const winningPos = getWinnerPos(currentBoard);
     const currentTie = checkForTie(board);
     setTie(currentTie);
+    setWinnerPos(winningPos);
     setWinner(currentWinner);
   }, [board]);
 
@@ -60,16 +63,21 @@ const GameBoard = ({ playerToken, gameStartedHandler }) => {
       <div className="board">
         <div className="row-1">
           <div className="col-1">
+            <div className={winnerPos[0] === 0 && winnerPos[1] === 3 ? "completed-line-vertical": "hide"}></div>
+            <div className={winnerPos[0] === 0 && winnerPos[1] === 1 ? "completed-line-horizontal": "hide"}></div>
+            <div className={winnerPos[0] === 0 && winnerPos[1] === 4 ? "completed-line-diagonal-top": "hide"}></div>
             <span className="player-token" onClick={() => setBoardToken("0")}>
               {setIcon(board["0"])}
             </span>
           </div>
           <div className="col-2">
+            <div className={winnerPos[0] === 1 && winnerPos[1] === 4 ? "completed-line-vertical": "hide"}></div>
             <span className="player-token" onClick={() => setBoardToken("1")}>
               {setIcon(board["1"])}
             </span>
           </div>
           <div className="col-3">
+            <div className={winnerPos[0] === 2 && winnerPos[1] === 5 ? "completed-line-vertical": "hide"}></div>
             <span className="player-token" onClick={() => setBoardToken("2")}>
               {setIcon(board["2"])}
             </span>
@@ -77,6 +85,7 @@ const GameBoard = ({ playerToken, gameStartedHandler }) => {
         </div>
         <div className="row-2">
           <div className="col-4">
+            <div className={winnerPos[0] === 3 && winnerPos[1] === 4 ? "completed-line-horizontal": "hide"}></div>
             <span className="player-token" onClick={() => setBoardToken("3")}>
               {setIcon(board["3"])}
             </span>
@@ -94,6 +103,8 @@ const GameBoard = ({ playerToken, gameStartedHandler }) => {
         </div>
         <div className="row-3">
           <div className="col-7">
+            <div className={winnerPos[0] === 6 && winnerPos[1] === 7 ? "completed-line-horizontal": "hide"}></div>
+            <div className={winnerPos[0] === 2 && winnerPos[1] === 4 ? "completed-line-diagonal-bottom": "hide"}></div>
             <span className="player-token" onClick={() => setBoardToken("6")}>
               {setIcon(board["6"])}
             </span>
