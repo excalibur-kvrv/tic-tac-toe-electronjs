@@ -132,7 +132,6 @@
   z-index: 1;
   position: fixed;
   margin-top: 3.5%;
-
   animation-name: win-line-horizontal;
   animation-timing-function: ease-in-out;
   animation-iteration-count: 1;
@@ -164,12 +163,12 @@
 }
 
 @keyframes win-line-diagonal-top {
-  0% {
+  from {
     width: 10px;
     margin-top: 1%;
     transform: rotate(45deg);
   }
-  100% {
+  to {
     width: 215px;
     margin-top: 11%;
     margin-left: -5%;
@@ -189,12 +188,12 @@
 }
 
 @keyframes win-line-diagonal-bottom {
-  0% {
+  from {
     width: 10px;
     margin-top: 6%;
     transform: rotate(129deg);
   }
-  100% {
+  to {
     width: 215px;
     margin-top: -3.2%;
     margin-left: -5%;
